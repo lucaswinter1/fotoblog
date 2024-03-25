@@ -1,0 +1,193 @@
+/* GENERAL SETUP PROJECT CONFIGS---------------------- */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root{
+    font-size: 62.5%;
+
+    --color-base-white: #ffffff;
+    --color-base-gray-100: #f5f5f5;
+    --color-base-gray-900: #202024;
+    --color-base-gray-300: #8d8d99;
+    --fc-primary: #202024;
+}
+
+/* PAGE CONFIGS---------------------- */
+
+body{
+    font-size: 1.6rem;
+    background-color: var(--color-base-white);
+    color: var(--color-base-gray-900);
+}
+
+html, input, body{
+    font-family: "Mulish", sans-serif;
+}
+
+#app{
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    height: 100vh;
+}
+
+.container{
+    padding: 1.6rem 3.2rem;
+    width: min(112rem, 100%);
+    margin: 0 auto;
+}
+
+main{
+    overflow-y: scroll;
+    background-color: var(--color-base-gray-100);
+}
+
+/* HEADER CONFIGS---------------------- */
+
+header,
+nav,
+nav ul{
+    display: flex;
+    align-items: center;
+    gap: 7.2rem;
+    font-weight: 700;
+}
+
+header input{
+    flex: 1;
+    height: 4.8rem;
+    background-color: var(--color-base-gray-100);
+    padding: 1.6rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+}
+
+header #profile{
+    border-radius: 50%;
+    height: 4.2rem;
+    width: 4.2rem;
+    object-fit: cover;
+}
+
+nav ul{
+    list-style: none;
+    color: var(--color-base-gray-300);
+    font-size: 1.8rem;
+}
+
+nav li.active{
+    color: var(--color-base-gray-900);
+}
+
+/* GALLERY CONFIGS---------------------- */
+
+main h1{
+    font-size: 2.4rem;
+    padding-top: 1.6rem;
+}
+
+.gallery{
+    margin-top: 3.2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.2rem;
+}
+
+.item{
+    background-color: var(--color-base-white);
+    border-radius: 0.8rem;
+    overflow: hidden;
+    box-shadow: -7px 5px 10px #20202408;
+}
+
+.item img{
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+
+    transition: all 300ms ease-out;
+
+    /* Fazendo essa mesma animação de hover por extenso seria assim
+    transition-property: transform, filter;
+    transition-duration: 300ms;
+    transition-timing-function: eas;
+     */
+}
+
+.item img:hover{
+    filter: hue-rotate(15deg) contrast(110%) saturate(200%);
+    transform: scale(1.1) rotate(-2deg);
+}
+
+.details{
+    padding: 2.2rem;
+    background-color: var(--color-base-white);
+    z-index: 1;
+    position: relative;
+}
+
+.details h2{
+    font-size: 1.8rem;
+}
+
+.tags{
+    margin-top: 1.2rem;
+}
+
+.details span{
+    font-size: 1.2rem;
+    background-color: var(--color-base-gray-100);
+    border-radius: 0.4rem;
+    padding: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* FOOTER CONFIGS---------------------- */
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7rem;
+}
+
+/* ANIMATIONS---------------------- */
+
+header{
+    --startY: -100%;
+    animation: move .4s ease-in ;
+}
+
+footer{
+    --startY: 100%;
+    animation: move .4s ease-in;
+}
+
+@keyframes move {
+    from {
+        transform: translateY(var(--startY));
+    }
+}
+
+.item{
+    --delay: .4s;
+    animation: appear .4s var(--delay) backwards;
+}
+
+@keyframes appear {
+    0%{
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    50%{
+        transform: scale(1.2);
+    }
+}
